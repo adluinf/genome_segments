@@ -80,12 +80,12 @@ def main():
     data_object.load_data_files()
 
     print("#  - Analysing data ... please wait ...")
-    result=data_object.analyse_data_files()
+    result_name, result=data_object.analyse_data_files()
 
-    print("# The following quantity will be computed:")
-
+    print("# The following quantity has been computed:", result_name)
     print("# The result is:")
     print(result)
+    print("# Done.")
 
 if __name__ == "__main__":
     main()

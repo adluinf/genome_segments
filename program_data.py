@@ -9,7 +9,7 @@ class ProgramData:
     def __init__(self, file_path_1, file_path_2):
         self.file_1=file_path_1
         self.file_2=file_path_2
-        self.dict_file_types={ 'f': 'FUNCTION', 's': 'SEGMENT' }
+        #self.dict_file_types={ 'f': 'FUNCTION', 's': 'SEGMENT' }
 
     def find_file_type(cls, arg1):
         """Docstring for find_file_type.
@@ -35,6 +35,10 @@ class ProgramData:
         Check which data files have been provided
         and compute the relevant analysis.
 
+        :returns:
+            :computation_name: string naming the computation,
+            :result: value resulting of the computation.
+
         """
         #file_1_ext=file_path.split('.')[-1]
         #file_1_type=self.dict_file_types[file_1_ext]
@@ -44,8 +48,32 @@ class ProgramData:
 
         #self.data_1=self.load_a_file(self.file_1)
         #self.data_2=self.load_a_file(self.file_2)
-        print('TODO')
-        pass
+        file_1_type=self.find_file_type(self.file_1)
+        file_2_type=self.find_file_type(self.file_2)
+
+        if file_1_type == 'SEGMENT':
+            if file_2_type == 'SEGMENT':
+                computation_name='overlap'
+                from computations import overlap
+                result=overlap(self.data_1,self.data_2)
+
+            elif file_2_type == 'FUNCTION':
+                computation_name='mean function'
+                from computations import mean_function
+                result=mean_function(self.data_1,self.data_2)
+
+        if file_1_type == 'FUNCTION':
+            if file_2_type == 'FUNCTION':
+                computation_name='Pearon correlation'
+                from computations import correlation
+                result=overlap(self.data_1,self.data_2)
+
+            elif file_2_type == 'SEGMENT':
+                computation_name='mean function'
+                from computations import mean_function
+                result=mean_function(self.data_2,self.data_1)
+
+        return computation_name, result
 
     def load_a_file(self, file_path):
         """Docstring for load_a_file.
