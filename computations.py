@@ -20,7 +20,6 @@ def correlation(function_data_1, function_data_2):
 
     """
     from numpy import corrcoef
-    #print(type(function_data_1),type(function_data_2))
     sample_pearson_correlation=corrcoef(function_data_1,function_data_2)[0,1]
     return sample_pearson_correlation
 
@@ -41,9 +40,6 @@ def overlap(segments_1, segments_2):
             diff_12 = min(s1[1],s2[1])-max(s1[0],s2[0])
             if diff_12>0:
                 overlap_length+=diff_12
-            #if s1[0]<s2[1]:
-            #    if s1[1]>=s2[0]:
-            #        overlap_length+=
     return overlap_length
 
 def mean_function(segment_data, function_data):
