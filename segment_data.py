@@ -19,7 +19,7 @@ class SegmentData:
         """
             This method loads a segment from a file.
         """
-        self.data=loadtxt(file_name)
+        self.data=loadtxt(file_name, dtype='int')
 
 
     def load_string(self, input_string):

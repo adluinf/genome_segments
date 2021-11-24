@@ -27,6 +27,7 @@ def overlap(segments_1, segments_2):
     """TODO: CHECK THIS ! Docstring for overlap.
     Compute the length of the overlap between the segments in segments_1 and
     segments_2.
+    Note: performance can be improved by breaking the inner for-loop if s1[0]>=s2[1].
 
     :segments_1: list of pairs of integers describing segments [beginning,end].
     :segments_2: list of pairs of integers describing segments [beginning,end].
@@ -55,6 +56,7 @@ def mean_function(segment_data, function_data):
     """
     function_values_in_segments=[]
     for s in segment_data.data:
+        #print(' the slice is: s[0]:s[1] :', s[0],s[1])
         function_values_in_segments.extend(function_data.data[s[0]:s[1]])
     return average(function_values_in_segments)
 

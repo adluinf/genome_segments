@@ -6,6 +6,8 @@ from program_data import ProgramData
     This is the main file to run the program.
 
 """
+class WrongFileTypeException(Exception):
+    pass
 
 def read_filename(default_file_name='testfile_a.s'):
     """Docstring for read_filename.
@@ -17,14 +19,15 @@ def read_filename(default_file_name='testfile_a.s'):
     file_name=default_file_name
     try:
         file_name=input("#  Supported file extesions are: .s and .f\n")
-        file_name_type=ProgramData.find_file_type[file_name]
-        print('file_1_type',file_type)
+        print('  file_name',file_name)
+        file_type=ProgramData.find_file_type(file_name)
+        print('  file_type',file_type)
         if file_type in ['FUNCTION','SEGMENT']:
             print("# The file type is:")
             print("   "+ file_type )
         else:
             raise WrongFileTypeException('WrongFileType')
-    except:
+    except KeyError or WrongFileTypeException:
         print("The file extension you provided is not supported.")
         print(">> Using default file instead.")
         print('')

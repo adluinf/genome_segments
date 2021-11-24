@@ -6,19 +6,23 @@ class ProgramData:
         and to call the appropriate analysis methods.
     """
 
+    #def __init__(self):
+    #    pass
+
     def __init__(self, file_path_1, file_path_2):
         self.file_1=file_path_1
         self.file_2=file_path_2
 
-    def find_file_type(cls, arg1):
+    @classmethod
+    def find_file_type(cls, file_name):
         """Docstring for find_file_type.
 
-        :arg1: a file name string.
-        :returns: file type
+        :file_name: a file name string.
+        :returns: file type string.
 
         """
         dict_file_types={ 'f': 'FUNCTION', 's': 'SEGMENT' }
-        file_ext=arg1.split('.')[-1]
+        file_ext=file_name.split('.')[-1]
         return dict_file_types[file_ext]
 
     def load_data_files(self):
