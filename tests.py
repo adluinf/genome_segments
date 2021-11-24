@@ -5,6 +5,8 @@ import unittest
 from segment_data import SegmentData
 from function_data import FunctionData
 
+from main import average, overlap, mean_function, correlation
+
 class TestGenomeMethods(unittest.TestCase):
 
     #def test_upper(self):
@@ -35,8 +37,9 @@ class TestGenomeMethods(unittest.TestCase):
 14.0
 15.0
 16.0"""
-        example_function_data=FunctionData()
-        example_function_data.load_string(example_function_string)    
+        example_function_data=FunctionData(example_function_string,
+                                           use_string=True)
+        #example_function_data.load_string(example_function_string)    
         #self.assertEqual(0,10**6)
         self.assertEqual(len(example_function_data.data),7)
 
@@ -45,12 +48,36 @@ class TestGenomeMethods(unittest.TestCase):
         self.assertEqual(estimated_overlap,3)
 
     def test_correlation(self):
-        estimated_correlation=0
-        self.assertEqual(estimated_correlation,0.9452853)
+        example_function_string_1="""10.0
+11.0
+12.0
+13.0
+14.0
+15.0
+16.0"""
+        example_function_string_2="""10.5
+11.5
+12.0
+13.0
+13.5
+15.0
+14.0"""
+        example_functions_1=FunctionData(example_function_string_1, use_string=True)
+        example_functions_2=FunctionData(example_function_string_2, use_string=True)
+        estimated_correlation=correlation(example_functions_1.data,
+                                          example_functions_2.data)
+        #self.assertEqual(estimated_correlation,0.9452853)
+        self.assertAlmostEqual(estimated_correlation,0.9452853,places=7)
 
     def test_mean_function_over_segments(self):
         mean_function=0
         self.assertEqual(mean_function,13.5)
+
+    def test_average(self):
+        values=range(15,19)
+        self.assertEqual(average(values),16.5)
+        #print(values)
+        #print(average(values),("?=16.5"))
 
 if __name__ == '__main__':
     unittest.main()
