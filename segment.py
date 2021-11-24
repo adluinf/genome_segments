@@ -11,7 +11,8 @@
     run ...
 """
 
-import numpy as np
+#import numpy as np
+from numpy import loadtxt
 
 class Segment:
 
@@ -19,4 +20,6 @@ class Segment:
     """
         This method loads a segment.
     """
-    print('TODO')
+    #print('TODO')
+    self.data=loadtxt(file_path)
+

@@ -3,6 +3,7 @@
 What does it do ?
 
 Where to put data ?
+  In "../data/" or a folder of your choice.
 
 How to run it ?
 
