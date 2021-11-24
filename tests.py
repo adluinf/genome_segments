@@ -5,7 +5,8 @@ import unittest
 from segment_data import SegmentData
 from function_data import FunctionData
 
-from main import average, overlap, mean_function, correlation
+from computations import average, overlap, mean_function, correlation
+
 
 class TestGenomeMethods(unittest.TestCase):
 

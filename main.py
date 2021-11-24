@@ -1,5 +1,13 @@
 from os.path import join
+from program_data import ProgramData
 
+""" Documentation
+
+    This is the main file to run the program.
+
+"""
+
+"""
 class ProgramData:
 
     """Docstring for ProgramData. """
@@ -122,7 +130,7 @@ def average(a_list):
 
     """
     return sum(a_list)/float(len(a_list))
-
+"""
 
 def read_filename():
     """TODO: Docstring for read_filename.
