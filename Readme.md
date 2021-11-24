@@ -32,5 +32,5 @@ Therefore numpy needs to be installed.
 
 ---
 
-Tested with python 3.9.
+Tested with python 3.8.5.
 
