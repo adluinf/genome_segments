@@ -1,6 +1,10 @@
 class ProgramData:
 
-    """Docstring for ProgramData. """
+    """Docstring for ProgramData.
+        A class to store information about data files,
+        to load data according to file types,
+        and to call the appropriate analysis methods.
+    """
 
     def __init__(self, file_path_1, file_path_2):
         self.file_1=file_path_1
@@ -56,10 +60,10 @@ class ProgramData:
         #print("   "+  self.dict_file_types[file_1_ext] )
 
         file_type=self.find_file_type(file_path)
-        if file_type is 'SEGMENT':
+        if file_type == 'SEGMENT':
             from segment_data import SegmentData
             data=SegmentData(file_path)
-        elif file_type is 'FUNCTION':
+        elif file_type == 'FUNCTION':
             from function_data import FunctionData
             data=FunctionData(file_path)
         return data

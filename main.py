@@ -71,10 +71,12 @@ def main():
 
     file_path_1=join(data_folder , file_1 )
     file_path_2=join(data_folder , file_2 )
-    print(file_path_1,file_path_2)
     data_object=ProgramData(file_path_1,file_path_2)
 
     print("#  - Loading data ... please wait ...")
+    print('       File 1:',file_path_1)
+    print('       File 2:',file_path_2)
+    #print(file_path_1,file_path_2)
     data_object.load_data_files()
 
     print("#  - Analysing data ... please wait ...")
