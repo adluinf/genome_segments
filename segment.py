@@ -10,3 +10,13 @@
 
     run ...
 """
+
+import numpy as np
+
+class Segment:
+
+    def load(self,file_name):
+    """
+        This method loads a segment.
+    """
+    print('TODO')
