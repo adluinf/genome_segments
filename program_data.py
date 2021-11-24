@@ -9,7 +9,6 @@ class ProgramData:
     def __init__(self, file_path_1, file_path_2):
         self.file_1=file_path_1
         self.file_2=file_path_2
-        #self.dict_file_types={ 'f': 'FUNCTION', 's': 'SEGMENT' }
 
     def find_file_type(cls, arg1):
         """Docstring for find_file_type.
@@ -40,14 +39,6 @@ class ProgramData:
             :result: value resulting of the computation.
 
         """
-        #file_1_ext=file_path.split('.')[-1]
-        #file_1_type=self.dict_file_types[file_1_ext]
-
-        #file_2_ext=file_path.split('.')[-1]
-        #file_2_type=self.dict_file_types[file_2_ext]
-
-        #self.data_1=self.load_a_file(self.file_1)
-        #self.data_2=self.load_a_file(self.file_2)
         file_1_type=self.find_file_type(self.file_1)
         file_2_type=self.find_file_type(self.file_2)
 
@@ -82,11 +73,6 @@ class ProgramData:
         :returns: data loaded from the file.
 
         """
-        #file_1_ext=file_path.split('.')[-1]
-        #print('file_1_ext: ', file_1_ext)
-        #print("# You gave a file of the following type:")
-        #print("   "+  self.dict_file_types[file_1_ext] )
-
         file_type=self.find_file_type(file_path)
         if file_type == 'SEGMENT':
             from segment_data import SegmentData
