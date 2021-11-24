@@ -64,7 +64,7 @@ def average(a_list):
     """
     return sum(a_list)/float(len(a_list))
 
-def main(arg1):
+def main():
     """TODO: Docstring for main.
 
     :arg1: TODO
