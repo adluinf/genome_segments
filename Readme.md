@@ -30,7 +30,7 @@ The current implementation uses methods from the *numpy* packages for the Pearso
 coefficient and file reading because these are highly efficient. 
 Therefore numpy needs to be installed.
 
---
+---
 
-Tested with python 2.7 and 3.9
+Tested with python 3.9.
 
