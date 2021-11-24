@@ -51,7 +51,7 @@ class TestGenomeMethods(unittest.TestCase):
         segments_1=SegmentData(segments_string_1, use_string=True)
         segments_2=SegmentData(segments_string_2, use_string=True)
 
-        estimated_overlap=overlap(segments_1.data, segments_2.data)
+        estimated_overlap=overlap(segments_1, segments_2)
         self.assertEqual(estimated_overlap,3)
 
     def test_correlation(self):
@@ -71,8 +71,8 @@ class TestGenomeMethods(unittest.TestCase):
 14.0"""
         functions_1=FunctionData(function_string_1, use_string=True)
         functions_2=FunctionData(function_string_2, use_string=True)
-        estimated_correlation=correlation(functions_1.data,
-                                          functions_2.data)
+        estimated_correlation=correlation(functions_1,
+                                          functions_2)
         #self.assertEqual(estimated_correlation,0.9452853)
         self.assertAlmostEqual(estimated_correlation,0.9452853,places=7)
 
@@ -88,7 +88,7 @@ class TestGenomeMethods(unittest.TestCase):
 15.0
 14.0"""
         functions_2=FunctionData(function_string_2, use_string=True)
-        estimated_mean_function=mean_function(segments_1.data, functions_2.data)
+        estimated_mean_function=mean_function(segments_1, functions_2)
         self.assertAlmostEqual(estimated_mean_function,13.25,places=1)
 
     def test_average(self):
