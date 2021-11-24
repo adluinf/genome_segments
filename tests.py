@@ -88,7 +88,7 @@ class TestGenomeMethods(unittest.TestCase):
 14.0"""
         functions_2=FunctionData(function_string_2, use_string=True)
         estimated_mean_function=mean_function(segments_1.data, functions_2.data)
-        self.assertAlmostEqual(estimated_mean_function,13.5,places=1)
+        self.assertAlmostEqual(estimated_mean_function,13.25,places=1)
 
     def test_average(self):
         values=range(15,19)

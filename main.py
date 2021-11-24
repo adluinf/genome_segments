@@ -37,18 +37,18 @@ def overlap(segments_1, segments_2):
             #        overlap_length+=
     return overlap_length
 
-def mean_function(function_data, segment_data):
+def mean_function(segment_data, function_data):
     """Docstring for mean_function.
     Compute the mean of the numbers in function_data over the positions covered
     by segment_data.
 
-    :function_data: list or array of floats.
     :segment_data: list of pairs of integers describing segments [beginning,end].
+    :function_data: list or array of floats.
 
     :returns: float, the mean of function_data over segment_data.
 
     """
-    function_values_in_segments=0
+    function_values_in_segments=[]
     for s in segment_data:
         function_values_in_segments.extend(function_data[s[0]:s[1]])
     return average(function_values_in_segments)
