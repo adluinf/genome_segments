@@ -24,7 +24,7 @@ def correlation(function_data_1, function_data_2):
     return sample_pearson_correlation
 
 def overlap(segments_1, segments_2):
-    """TODO: CHECK THIS ! Docstring for overlap.
+    """Docstring for overlap.
     Compute the length of the overlap between the segments in segments_1 and
     segments_2.
     Note: performance can be improved by breaking the inner for-loop if s1[0]>=s2[1].
