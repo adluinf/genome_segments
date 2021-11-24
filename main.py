@@ -1,3 +1,62 @@
+from os.path import join
+
+class ProgramData:
+
+    """Docstring for ProgramData. """
+
+    def __init__(self, file_path_1, file_path_2):
+        self.file_1=file_path_1
+        #self.file_1_type=self.file_1.split('.')[-1]
+        self.file_2=file_path_2
+        #self.file_2_type=self.file_2.split('.')[-1]
+
+    def find_file_type(cls, arg1):
+        """Docstring for find_file_type.
+
+        :arg1: a file name string.
+        :returns: file type
+
+        """
+        dict_file_types={ 'f': 'FUNCTION', 's': 'SEGMENT' }
+        file_ext=arg1.split('.')[-1]
+        return dict_file_types[file_ext]
+
+    def load_data_files(self):
+        """Docstring for load_data_files.
+        Check which data files have been provided
+        and load the files into memory.
+        """
+        self.data_1=self.load_a_file(self.file_1)
+        self.data_2=self.load_a_file(self.file_2)
+
+    def analyse_data_files(self):
+        """Docstring for analyse_data_files.
+        Check which data files have been provided
+        and compute the relevant analysis.
+
+        """
+        #self.data_1=self.load_a_file(self.file_1)
+        #self.data_2=self.load_a_file(self.file_2)
+        print('TODO')
+        pass
+
+    def load_a_file(self, file_path):
+        """TODO: Docstring for load_a_file.
+
+        :arg1: TODO
+        :returns: TODO
+
+        """
+        file_1_ext=file_1.split('.')[-1]
+        dict_file_types={ 'f': 'FUNCTION', 's': 'SEGMENT' }
+        print("# You gave files of the following types:")
+        print("  1: "+  dict_file_types[file_1_ext] )
+
+        return load_file( data_folder , file_1 )
+    #data_1=loaddd_file( os.path.join(data_folder , file_1 )
+    #data_1= join(data_folder , file_1 )
+    #print(data_1)
+
 def correlation(function_data_1, function_data_2):
     """Docstring for correlation.
 
@@ -64,15 +123,79 @@ def average(a_list):
     """
     return sum(a_list)/float(len(a_list))
 
-def main():
-    """TODO: Docstring for main.
 
-    :arg1: TODO
-    :returns: TODO
+def read_filename():
+    """TODO: Docstring for read_filename.
+    Read input filname from command line and check if it is supported.
+    Raise exception if the filename is unsupported.
 
+    :returns: a filename
     """
-    pass
+    file_name=''
+    try:
+        current_input=input("#  Supported file extesions are: .s and .f")
+        if len(current_input)>0 :
+            file_1=current_input
+        else:
+            file_1='testfile_a.s'
 
+        file_1_type=ProgramData.find_file_type[file_1]
+        if file_1_type in ['FUNCTION','SEGMENT']:
+            print("# The file type is:")
+            print("   "+ file_1_type )
+        else:
+            raise WrongFileTypeException('WrongFileType')
+    except:
+        print("The file extension you provided is not supported.\n Please try again.")
+    return file_name
+
+def main():
+    """Docstring for main.
+    This is the main method run.
+    It reads a file path and two file names from the standard input.
+    Then it loads the data and computes the quantity relevant given the file
+    extensions.
+    """
+    print("#  Genome Segments Main Function: ")
+    print("# ")
+
+    current_input=input("#  Please type the path to the data, default: ../data/ \n")
+    if len(current_input)>0 :
+        data_folder=current_input
+    else:
+        data_folder='../data/'
+
+    current_input=input("#  Please select file_1, default: 1: testfile_a.s\n")
+    try:
+        file_1=read_filename()
+    except:
+        file_1='testfile_a.s'
+
+    current_input=input("#  Please select file_2, default: 2: testfile_a.f\n")
+    try:
+        file_2=read_filename()
+    #if len(current_input)>0 :
+    #    file_2=current_input
+    except:
+        file_2='testfile_a.f'
+
+    print("# You gave a file of the following types:")
+    print("  1: "+  ProgramData.find_file_type[file_1] )
+
+    file_path_1=join(data_folder , file_1 )
+    file_path_2=join(data_folder , file_2 )
+    data_object=ProgramData(file_path_1,file_path_2)
+
+    print("#  - Loading data ... please wait ...")
+    data_object.load_data_files()
+
+    print("#  - Analysing data ... please wait ...")
+    result=data_object.analyse_data_files()
+
+    print("# The following quantity will be computed:")
+
+    print("# The result is:")
+    print(result)
 
 if __name__ == "__main__":
     main()
